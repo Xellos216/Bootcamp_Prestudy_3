@@ -1,41 +1,30 @@
-# SQL Pre-Study - Day 1
+# Day 2: SQL 제약조건 실습
 
-## 📘 목적
-Kotlin & Spring 백엔드 개발 부트캠프 예습 차원에서 MySQL을 활용한 관계형 DB 기초 개념과 실습 능력 향상을 목표로 합니다.
-
----
-
-## 🧰 실습 환경
-- 운영체제: Ubuntu 22.04
-- DBMS: MySQL 8.x
-- 실습 방식: CLI 기반 SQL 명령어 입력
+## ✅ 실습 목표
+- 제약조건(CONSTRAINTS)의 개념과 실제 작동 방식 이해
+- SQL로 테이블 설계 및 데이터 무결성 보장 실습
 
 ---
 
-## 📚 진행 내용 (Day 1)
-- MySQL 사용자 계정 생성
-- testdb 생성 및 users 테이블 구축
-- 기본 CRUD 실습: INSERT, SELECT, UPDATE, DELETE
-- SQL 명령어 및 데이터베이스 개념 Q&A
+## 🗂️ 실습 항목 요약
 
----
+### 📌 테이블 생성
 
-## 📦 포함 파일
-- `sql_day1.md`: 실습 내용 정리
-- `sql_day1_QA.md`: 학습 중 Q&A 정리
-- `testdb_day1_dump.sql`: 실습 결과 DB 백업 (옵션)
+#### users 테이블
+```sql
+CREATE TABLE users (
+    id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL DEFAULT '',
+    age INT DEFAULT 0,
+    CONSTRAINT unique_email UNIQUE (email),
+    CONSTRAINT pk_users PRIMARY KEY (id)
+);
 
----
-
-## ▶️ 실행 방법
-```bash
-mysql -u h -p
-USE testdb;
-SELECT * FROM users;
-
----
-
-## 다음 실습 (Day 2)
-제약조건 (NOT NULL, UNIQUE, DEFAULT)
-기본키 / 외래키
-두 테이블 간 관계 설계
+#### orders 테이블
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    user_id INT,
+    product VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
