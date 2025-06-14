@@ -1,7 +1,3 @@
-좋습니다. 아래는 각 기술(HTML, CSS, Java, JavaScript, Kotlin, IntelliJ IDEA)의 개념을 초보자도 이해할 수 있도록 **용도, 핵심 특징, 사용 예시** 중심으로 정리한 상세 설명입니다:
-
----
-
 ## 1. **HTML (HyperText Markup Language)**
 
 ### 개념:
